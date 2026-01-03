@@ -54,68 +54,34 @@
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### **🟡 WEEK 2 – Smart Conversation Mode (CURRENT WEEK)(DONE ✅ ONLY 60% PART REST ARE THESE)**
-
-
+#### **🟡 WEEK 2 – Smart Conversation Mode (CURRENT WEEK)(DONE ✅)**
 
 ##### **Goal: Jarvis ko “human-like” banana**
 
-
-
 ###### **Features:**
-
 
 ***1️⃣ Wake Word Once Mode***
 
 ***Wake word sirf ek baar***
-
-
-
 ***Next 10–15 sec tak continuous conversation***
 
-
-
 ***2️⃣ Follow-up Question Handling***
-
-
-
 ***User: Hey Jarvis, weather batao***
-
 ***Jarvis: Delhi ka temperature 32°C hai***
-
 ***User: Kal?***
-
 ***Jarvis: Kal thoda thanda rahega***
-
-
-
-
 
 ***3️⃣ Conversation Timeout***
 
-
-
 ***Agar 15 sec silence → wake word again required***
-
-
 
 ***4️⃣ Thinking Indicators***
 
-
-
 ***“Hmm soch raha hoon”***
 
-
-
 ***“Let me check that”***
-
-
-
 ***📌 Output:***
-
 ***Jarvis feels alive, not robotic***
-
-
 
 ***------------------------------------------------------------------------------------------------------------------------------------------------------------***
 
@@ -123,78 +89,29 @@
 
 #### **🔵 WEEK 3 – Personality \& Control**
 
-### 
-
 ##### **Goal: User experience + control**
-
-### 
 
 ###### **Features:**
 
-
-
 ***1️⃣ Personality Modes***
-
-
-
 ***Normal***
-
-
-
 ***Professional***
-
-
-
 ***Funny***
-
-
-
 ***Assistant mode***
-
-
-
 ***"Jarvis, funny mode on"***
 
-
-
-
-
 ***2️⃣ Command Recall***
-
-
-
 ***"What was my last command?"***
-
 ***"Repeat your last reply"***
 
-
-
 ***3️⃣ User Name Memory***
-
-
-
 ***"My name is Eshant"***
-
 ***"Good morning Eshant"***
 
-
-
-
-
 ***4️⃣ Voice Tone Adjustment***
-
-
-
 ***Speed***
-
-
-
 ***Pitch***
-
-
-
 ***Calm / energetic***
-
 
 
 ***------------------------------------------------------------------------------------------------------------------------------------------------------------***
