@@ -27,21 +27,29 @@ memory = load_memory()
 conversation = [
     {
         "role": "system",
-        "content": "You are JarvisXo, a smart Hinglish AI assistant. Remember user details and reply naturally."
+        "content": f"You are JarvisXo, a smart Hinglish AI assistant. "
+                f"The user's name is {memory.get('name', 'Boss')}. "
+                f"Always reply in Hinglish and use the user's name naturally."
     }
 ]
+
 
 def check_personal_commands(prompt):
     prompt = prompt.lower()
 
-    # Save name
-    if "my name is" in prompt or "mera naam" in prompt:
-        name = prompt.split("is")[-1].strip().title()
-        memory["name"] = name
-        save_memory(memory)
-        return f"Theek hai {name}, main yaad rakhunga 😊"
+    if "my name is" in prompt:
+        name = prompt.replace("my name is", "").strip().title()
 
-    return None
+    elif "mera naam" in prompt and "hai" in prompt:
+        name = prompt.replace("mera naam", "").replace("hai", "").strip().title()
+
+    else:
+        return None
+
+    memory["name"] = name
+    save_memory(memory)
+    return f"Theek hai {name}, main yaad rakhunga 😊"
+
 
 def ask_ai(prompt):
     if not os.getenv("OPENAI_API_KEY"):
@@ -55,13 +63,6 @@ def ask_ai(prompt):
     try:
         conversation.append({"role": "user", "content": prompt})
         recent = conversation[-8:]
-
-        # 🔹 Inject memory into system prompt
-        name_info = f"User name is {memory['name']}." if memory["name"] else ""
-        recent.insert(0, {
-            "role": "system",
-            "content": f"You are JarvisXo. {name_info} Reply in Hinglish."
-        })
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
