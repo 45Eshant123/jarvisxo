@@ -24,15 +24,7 @@ def save_memory(memory):
 memory = load_memory()
 
 # 🧠 Short-term conversation
-conversation = [
-    {
-        "role": "system",
-        "content": f"You are JarvisXo, a smart Hinglish AI assistant. "
-                f"The user's name is {memory.get('name', 'Boss')}. "
-                f"Always reply in Hinglish and use the user's name naturally."
-    }
-]
-
+conversation = []
 
 def check_personal_commands(prompt):
     prompt = prompt.lower()
@@ -50,17 +42,55 @@ def check_personal_commands(prompt):
     save_memory(memory)
     return f"Theek hai {name}, main yaad rakhunga 😊"
 
+def check_preferences(prompt):
+    prompt = prompt.lower()
+
+    likes = ["i like", "mujhe pasand hai"]
+    dislikes = ["i hate", "mujhe pasand nahi"]
+
+    for phrase in likes:
+        if phrase in prompt:
+            item = prompt.replace(phrase, "").strip()
+            memory["preferences"][item] = "like"
+            save_memory(memory)
+            return f"Samajh gaya 👍 tumhe {item} pasand hai."
+
+    for phrase in dislikes:
+        if phrase in prompt:
+            item = prompt.replace(phrase, "").strip()
+            memory["preferences"][item] = "dislike"
+            save_memory(memory)
+            return f"Theek hai, main yaad rakhunga ki tumhe {item} pasand nahi."
+
+    return None
+
+
 
 def ask_ai(prompt):
     if not os.getenv("OPENAI_API_KEY"):
         return "OpenAI API key nahi mili"
 
-    # 🔹 Check memory commands first
     personal_reply = check_personal_commands(prompt)
     if personal_reply:
         return personal_reply
 
+    preference_reply = check_preferences(prompt)
+    if preference_reply:
+        return preference_reply
+
     try:
+        prefs = ", ".join(
+            [f"{k} ({v})" for k, v in memory["preferences"].items()]
+        ) if memory["preferences"] else "No preferences saved."
+
+        conversation.insert(0, {
+            "role": "system",
+            "content": f"You are JarvisXo. "
+                    f"User name is {memory.get('name', 'Boss')}. "
+                    f"User preferences: {prefs}. "
+                    f"Reply in Hinglish."
+        })
+
         conversation.append({"role": "user", "content": prompt})
         recent = conversation[-8:]
 

@@ -100,11 +100,11 @@
 ***Assistant mode***
 ***"Jarvis, funny mode on"***
 
-***2️⃣ Command Recall***
+***2️⃣ Command Recall (DONE)***
 ***"What was my last command?"***
 ***"Repeat your last reply"***
 
-***3️⃣ User Name Memory***
+***3️⃣ User Name Memory (DONE)***
 ***"My name is Eshant"***
 ***"Good morning Eshant"***
 
@@ -112,6 +112,13 @@
 ***Speed***
 ***Pitch***
 ***Calm / energetic***
+
+***👉 User Preferences Memory (likes / dislikes / defaults)***
+***Matlab:***
+
+***Jarvis user ki pasand / na-pasand yaad rakhe***
+***Future replies me automatically use kare***
+***Sab kuch memory.json me save ho (restart ke baad bhi)***
 
 
 ***------------------------------------------------------------------------------------------------------------------------------------------------------------***
