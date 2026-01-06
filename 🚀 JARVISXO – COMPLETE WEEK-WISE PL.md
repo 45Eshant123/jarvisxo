@@ -3,61 +3,28 @@
 #### **🟢 WEEK 1 – Core Voice Assistant (DONE ✅)**
 
 ##### **Goal: Basic Jarvis jo sun sake, soche, bole**
-
 ###### **Features:**
-
 ***Wake word detection (hey jarvis / jarvisxo)***
-
 ***Speech Recognition (Mic input)***
-
 ***AI brain (OpenAI)***
-
-
-
 ***Reply text + audio***
-
-
-
 ***Intro voice***
-
-
-
 ***Commands:***
-
-
-
 ***Open Chrome***
-
-
-
 ***Open YouTube***
-
-
-
 ***Weather***
-
-
-
 ***Memory clear***
-
-
-
 ***Exit***
 
-
-
 ***Short-term conversation memory***
-
 ***✅ Status: COMPLETE \& STABLE(DONE)***
-
 ***🎉 Good foundation built***
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+***------------------------------------------------------------------------------------------------------------------------------------------------------------***
 
 #### **🟡 WEEK 2 – Smart Conversation Mode (CURRENT WEEK)(DONE ✅)**
 
 ##### **Goal: Jarvis ko “human-like” banana**
-
 ###### **Features:**
 
 ***1️⃣ Wake Word Once Mode***
@@ -90,7 +57,6 @@
 #### **🔵 WEEK 3 – Personality \& Control**
 
 ##### **Goal: User experience + control**
-
 ###### **Features:**
 
 ***1️⃣ Personality Modes***
@@ -127,44 +93,15 @@
 
 #### **🟣 WEEK 4 – System Automation (Power Feature)**
 
-#### 
-
 ##### **Goal: Jarvis becomes real desktop assistant**
-
-
-
 ###### **Features:**
-
-
-
 ***Volume up/down/mute***
-
-
-
 ***Take screenshot***
-
-
-
 ***Lock system***
-
-
-
 ***Open files/folders***
-
-
-
 ***Check battery status***
-
-
-
 ***Internet ON/OFF check***
-
-
-
 ***Time \& date (offline)***
-
-
-
 ***⚠️ Advanced but very impressive***
 
 
@@ -175,40 +112,14 @@
 
 #### **🔴 WEEK 5 – Internet Intelligence**
 
-
-
 ##### **Goal: Real-world awareness**
-
-
-
 ###### **Features:**
-
-
-
 ***Real-time news (API based)***
-
-
-
 ***Stock prices***
-
-
-
 ***Crypto rates***
-
-
-
 ***Live weather forecast***
-
-
-
 ***Google search summary***
-
-
-
 ***Wikipedia mode***
-
-
-
 ***"Jarvis, latest tech news batao"***
 
 
@@ -219,36 +130,13 @@
 
 #### **🟠 WEEK 6 – Security \& Offline Mode**
 
-
-
 ##### **Goal: Reliability + safety**
-
-
-
 ###### **Features:**
-
-
-
 ***Offline fallback replies***
-
-
-
 ***Error recovery mode***
-
-
-
 ***Auto-restart voice engine***
-
-
-
 ***Mic failure detection***
-
-
-
 ***Safe shutdown***
-
-
-
 ***Background run mode***
 
 
@@ -259,36 +147,13 @@
 
 #### **🟤 WEEK 7 – JarvisXo Pro (FINAL FORM 🔥)**
 
-
-
 ##### **Goal: Resume + demo ready product**
-
-
-
 ###### **Features:**
-
-
-
 ***GUI (optional – Tkinter / Web)***
-
-
-
 ***Startup launch***
-
-
-
 ***Custom wake word***
-
-
-
 ***Config file (JSON)***
-
-
-
 ***Logging system***
-
-
-
 ***Full documentation***
 
 
@@ -296,9 +161,6 @@
 ***------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------***
 
 ***🏆 FINAL RESULT***
-
-
-
 ***After all weeks:***
 
 ***✅ AI Voice Assistant***
