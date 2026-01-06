@@ -65,6 +65,27 @@ def check_preferences(prompt):
     return None
 
 
+def detect_mood(text):
+    text = text.lower()
+
+    happy_words = ["happy", "excited", "great", "awesome", "maza", "khush"]
+    sad_words = ["sad", "depressed", "bore", "akela", "thak", "low"]
+    angry_words = ["angry", "gussa", "irritated", "pagal", "bakwas"]
+
+    for word in happy_words:
+        if word in text:
+            return "happy"
+
+    for word in sad_words:
+        if word in text:
+            return "sad"
+
+    for word in angry_words:
+        if word in text:
+            return "angry"
+
+    return "neutral"
+
 
 def ask_ai(prompt):
     if not os.getenv("OPENAI_API_KEY"):
@@ -79,20 +100,27 @@ def ask_ai(prompt):
         return preference_reply
 
     try:
-        prefs = ", ".join(
-            [f"{k} ({v})" for k, v in memory["preferences"].items()]
-        ) if memory["preferences"] else "No preferences saved."
-
-        conversation.insert(0, {
-            "role": "system",
-            "content": f"You are JarvisXo. "
-                    f"User name is {memory.get('name', 'Boss')}. "
-                    f"User preferences: {prefs}. "
-                    f"Reply in Hinglish."
-        })
+        mood = detect_mood(prompt)
+        user_name = memory.get("name", "Boss")
 
         conversation.append({"role": "user", "content": prompt})
         recent = conversation[-8:]
+
+        mood_instruction = {
+            "happy": "User is happy. Reply in an energetic and cheerful tone.",
+            "sad": "User is sad. Reply politely, softly, and emotionally supportive.",
+            "angry": "User is angry. Reply calmly and respectfully.",
+            "neutral": "Reply normally in Hinglish."
+        }
+
+        recent.insert(0, {
+            "role": "system",
+            "content": f"""
+You are JarvisXo, a smart Hinglish AI assistant.
+User name is {user_name}.
+{mood_instruction[mood]}
+"""
+        })
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
