@@ -9,21 +9,18 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 MEMORY_FILE = "memory.json"
 
-# 🔹 Load memory
 def load_memory():
     if not os.path.exists(MEMORY_FILE):
         return {"name": None, "preferences": {}}
     with open(MEMORY_FILE, "r") as f:
         return json.load(f)
 
-# 🔹 Save memory
 def save_memory(memory):
     with open(MEMORY_FILE, "w") as f:
         json.dump(memory, f, indent=4)
 
 memory = load_memory()
 
-# 🧠 Short-term conversation
 conversation = []
 
 def check_personal_commands(prompt):
