@@ -39,7 +39,6 @@ while True:
     if not command:
         continue
 
-    # 🟢 WAKE WORD CHECK
     if any(command.startswith(w) for w in WAKE_WORDS):
         active_mode = True
         last_active_time = time.time()
@@ -49,24 +48,20 @@ while True:
             speak("Haa bholiye boss")
             continue
 
-    # 💤 AUTO SLEEP
     if active_mode and time.time() - last_active_time > ACTIVE_TIMEOUT:
         active_mode = False
         speak("Main sleep mode me ja rahi hoon")
         continue
 
-    # ❌ IGNORE if not active
     if not active_mode:
         continue
 
     last_active_time = time.time()
 
-    # 🔴 EXIT
     if "exit" in command or "band ho jao" in command:
         speak("Goodbye boss")
         break
 
-    # 🌐 ACTIONS
     if "chrome" in command:
         speak("Chrome khol raha hoon")
         open_chrome()
