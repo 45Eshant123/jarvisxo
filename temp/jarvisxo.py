@@ -6,7 +6,7 @@ from brain import ask_ai, conversation
 from actions import open_chrome, open_youtube, get_weather
 
 WAKE_WORDS = ["hey jarvis", "jarvisxo", "jarvis"]
-ACTIVE_TIMEOUT = 15  # seconds
+ACTIVE_TIMEOUT = 50  # seconds
 
 def listen():
     r = sr.Recognizer()
@@ -27,7 +27,7 @@ def remove_wake_word(text):
             return text[len(word):].strip()
     return text
 
-speak("JarvisXo online ho chuki hai")
+speak("Mai aapki personal JarvisXo aap ke leye hajir hoon boss")
 
 active_mode = False
 last_active_time = 0
@@ -63,11 +63,11 @@ while True:
         break
 
     if "chrome" in command:
-        speak("Chrome khol raha hoon")
+        speak("Chrome khol rahi hoon")
         open_chrome()
 
     elif "youtube" in command:
-        speak("YouTube khol raha hoon")
+        speak("YouTube khol rahi hoon")
         open_youtube()
 
     elif "weather" in command or "mausam" in command:
@@ -79,9 +79,9 @@ while True:
             "role": "system",
             "content": "You are JarvisXo, a smart Hinglish AI assistant."
         })
-        speak("Theek hai, sab bhool gaya")
+        speak("Theek hai boss jaisi aap ki marjhi, sab kuch bhool gayi")
 
     else:
-        speak("Soch raha hoon")
+        speak("Okay boss main kuch Sochthi hoon iske bare me")
         reply = ask_ai(command)
         speak(reply)

@@ -11,7 +11,7 @@ MEMORY_FILE = "memory.json"
 
 def load_memory():
     if not os.path.exists(MEMORY_FILE):
-        return {"name": None, "preferences": {}}
+        return {"name": None, "preferences": {}, "mood": "neutral"}
     with open(MEMORY_FILE, "r") as f:
         return json.load(f)
 
@@ -20,6 +20,7 @@ def save_memory(memory):
         json.dump(memory, f, indent=4)
 
 memory = load_memory()
+
 
 conversation = []
 
@@ -65,9 +66,9 @@ def check_preferences(prompt):
 def detect_mood(text):
     text = text.lower()
 
-    happy_words = ["happy", "excited", "great", "awesome", "maza", "khush"]
+    happy_words = ["happy", "excited", "great", "awesome", "maza", "khush", "bindaas", "mast", "dil garden darden ho gaya"]
     sad_words = ["sad", "depressed", "bore", "akela", "thak", "low"]
-    angry_words = ["angry", "gussa", "irritated", "pagal", "bakwas"]
+    angry_words = ["angry", "gussa", "irritated", "pagal", "bakwas", "nakhre", "chillam chilly", "fuming", "furious", "dimak kharaab", "dimak ka dahi ho gaya hai aaaj mera"]
 
     for word in happy_words:
         if word in text:
@@ -97,7 +98,15 @@ def ask_ai(prompt):
         return preference_reply
 
     try:
-        mood = detect_mood(prompt)
+        current_mood = detect_mood(prompt)
+        if current_mood != "neutral":
+            memory["mood"] = current_mood
+            save_memory(memory)
+            
+        mood = memory.get("mood", "neutral")
+
+        memory["mood"] = mood
+        save_memory(memory)
         user_name = memory.get("name", "Boss")
 
         conversation.append({"role": "user", "content": prompt})
