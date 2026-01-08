@@ -1,5 +1,7 @@
 import speech_recognition as sr
 import time
+from brain import current_mood
+
 
 from voice import speak
 from brain import ask_ai, conversation
@@ -57,6 +59,10 @@ while True:
         continue
 
     last_active_time = time.time()
+
+    if current_mood in ["sad", "angry"]:
+        speak("Boss pehle thoda baat kar lete hain, phir kaam karenge.")
+        continue
 
     if "exit" in command or "band ho jao" in command:
         speak("Goodbye boss")

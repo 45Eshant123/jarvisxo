@@ -21,6 +21,7 @@ def save_memory(memory):
 
 memory = load_memory()
 
+current_mood = "neutral"
 
 conversation = []
 
@@ -64,6 +65,7 @@ def check_preferences(prompt):
 
 
 def detect_mood(text):
+    global current_mood
     text = text.lower()
 
     happy_words = ["happy", "excited", "great", "awesome", "maza", "khush", "bindaas", "mast", "dil garden darden ho gaya"]
@@ -72,17 +74,31 @@ def detect_mood(text):
 
     for word in happy_words:
         if word in text:
-            return "happy"
+            current_mood = "happy"
+            return current_mood
 
     for word in sad_words:
         if word in text:
-            return "sad"
-
+            current_mood = "sad"
+            return current_mood
+        
     for word in angry_words:
         if word in text:
-            return "angry"
+            current_mood = "angry"
+            return current_mood
 
-    return "neutral"
+    current_mood = "neutral"
+    return current_mood
+
+
+def mood_first_reply(mood, name="Boss"):
+    if mood == "sad":
+        return f"{name}, lagta hai aaj thoda heavy feel ho raha hai 😔 Main yahin hoon."
+    if mood == "angry":
+        return f"{name}, thoda shaant ho jaate hain 😌 Pehle saans lete hain."
+    if mood == "happy":
+        return f"Waah {name}! Aaj mood full solid lag raha hai 😄"
+    return None
 
 
 def ask_ai(prompt):
@@ -96,6 +112,13 @@ def ask_ai(prompt):
     preference_reply = check_preferences(prompt)
     if preference_reply:
         return preference_reply
+
+    mood = detect_mood(prompt)
+    name = memory.get("name", "Boss")
+
+    first_reply = mood_first_reply(mood, name)
+    if first_reply:
+        return first_reply
 
     try:
         current_mood = detect_mood(prompt)
