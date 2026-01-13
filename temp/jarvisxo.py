@@ -7,7 +7,7 @@ from voice import speak
 from brain import ask_ai, conversation
 from actions import open_chrome, open_youtube, get_weather
 
-WAKE_WORDS = ["hey jarvis", "jarvisxo", "jarvis"]
+WAKE_WORDS = ["hey jarvis", "jarvisxo", "jarvis", "hello"]
 ACTIVE_TIMEOUT = 50  # seconds
 
 def listen():
