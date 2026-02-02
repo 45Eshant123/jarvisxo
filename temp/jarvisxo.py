@@ -1,8 +1,6 @@
 import speech_recognition as sr
 import time
 from brain import current_mood
-
-
 from voice import speak
 from brain import ask_ai, conversation
 from actions import open_chrome, open_youtube, get_weather
@@ -64,7 +62,17 @@ while True:
         speak("Boss pehle thoda baat kar lete hain, phir kaam karenge.")
         continue
 
-    if "exit" in command or "band ho jao" in command:
+    exit_commands = [
+        "exit",
+        "band ho jao",
+        "goodbye",
+        "quit",
+        "stop",
+        "shut down",
+        "off",
+        "bye"
+    ]
+    if any(word in command.lower() for word in exit_commands):
         speak("Goodbye boss")
         break
 

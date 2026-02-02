@@ -48,24 +48,64 @@ cd PROJECT-JarvisXo
 
 ### Step 2: Install Required Dependencies
 
+#### Option A: Install All Packages at Once (Recommended)
+
 ```bash
-# Install all required Python packages
+# Install all required Python packages from requirements.txt
 pip install -r requirements.txt
 ```
 
-**Required Packages:**
-- `speechrecognition` - Voice recognition
-- `pyttsx3` - Text-to-speech
-- `pyaudio` - Audio input/output
-- `requests` - API calls
-- `openai` - OpenAI GPT integration
-- `python-telegram-bot` - Telegram bot functionality
+#### Option B: Install Packages Individually
+
+If you prefer to install packages one by one, use the following commands:
+
+```bash
+# OpenAI API integration for AI-powered responses
+pip install openai
+
+# HTTP library for API calls
+pip install requests
+
+# Text-to-speech synthesis
+pip install pyttsx3
+
+# Voice recognition and speech input
+pip install SpeechRecognition
+
+# Audio input/output support
+pip install pyaudio
+```
+
+**Required Packages Details:**
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `openai` | Latest | OpenAI GPT integration for AI responses |
+| `requests` | Latest | HTTP library for making API calls |
+| `pyttsx3` | Latest | Text-to-speech engine for audio output |
+| `SpeechRecognition` | Latest | Voice recognition for speech input |
+| `pyaudio` | Latest | Audio input/output (microphone access) |
 
 **Note for Windows Users:**
-If you encounter issues installing `pyaudio`, use:
+
+If you encounter issues installing `pyaudio` on Windows, use the alternative installation method:
+
 ```bash
+# Method 1: Using pipwin (Recommended for Windows)
 pip install pipwin
 pipwin install pyaudio
+
+# Method 2: If pipwin fails, try:
+pip install pipwin --upgrade
+pipwin refreshall
+pipwin install pyaudio
+```
+
+If problems persist, you can try:
+```bash
+# Install pre-built wheel for pyaudio
+pip install pipwin
+pipwin install pyaudio==0.2.11
 ```
 
 ---
@@ -162,11 +202,11 @@ python jarvisxo_voice_agent.py
 
 | Command | Action |
 |---------|--------|
-| "Chrome" / "Open Chrome" | Opens Google Chrome |
+| "Chrome"  | "Open Chrome" | Opens Google Chrome |
 | "VS Code" | Opens Visual Studio Code |
 | "YouTube" | Opens YouTube in browser |
-| "Weather" / "Mausam" | Gets current weather |
-| "Time" | Tells current time |
+| "Weather" | "Mausam" | Gets current weather |
+| "Time"    | Tells current time |
 | "Exit" / "Bye" | Shuts down JarvisXo |
 | Any other question | Asks AI (GPT) for response |
 
@@ -235,7 +275,7 @@ PROJECT-JarvisXo/temp/
 │            # Core functionality and processing
 ├── README.md                   # This file
 └── temp/
-    ├──jarvisxo_core.py
+    ├──jarvisxo.py
     ├──actions.py
     ├──brain.py
     ├──config.py
@@ -246,7 +286,7 @@ PROJECT-JarvisXo/temp/
 ### Customization:
 
 **Change Voice Speed:**
-In `jarvisxo_core.py` or `jarvisxo_voice_agent.py`:
+In `jarvisxo.py`:
 ```python
 engine.setProperty("rate", 160)  # Increase for faster, decrease for slower
 ```
